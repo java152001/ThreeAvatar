@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+}
+
+#backgroundCont {
+    margin: 0 auto;
+    width: 1024px;
+    height: 600px;
+    background-image: url('HomeOffice.jpeg');
+    background-size: 1024px 600px;
+    position: relative;
+}
+
+.avatarLocPositioning {
+    padding-top: 295px;
+    padding-left: 145px;
+}
+
+#avatarLoc {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+
+#poster {
+    width: 65px;
+    height: 95px;
+    /* background-color: green; */
+    position: absolute;
+    left: 473px;
+    top: 230px;
+    outline: solid 0px yellow;
+    transition: outline .2s linear;
+}
+
+#poster:hover {
+    outline-width: 5px;
+}
+
+#framedArt {
+    width: 115px;
+    height: 149px;
+    /* background-color: yellow; */
+    position: absolute;
+    left: 674px;
+    top: 181px;
+    outline: solid 0px green;
+    transition: outline .2s linear;
+}
+
+#framedArt:hover {
+    outline-width: 5px;
+}
+
+#statue {
+    width: 28px;
+    height: 50px;
+    /* background-color: red; */
+    position: absolute;
+    left: 210px;
+    top: 310px;
+    outline: solid 0px red;
+    transition: outline .2s linear;
+}
+
+#statue:hover {
+    outline-width: 5px;
+}
+
+#statueModal {
+    width: 200px;
+    height: 200px;
+    border: 2px solid blue;
+    background-color: #343a4e;
+    position: absolute;
+    left: -25px;
+    top: -235px;
+    display: none;
+}
+
+#statueModalArrow {
+    background-color: blue;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    bottom: -20px;
+    left: 15px;
+}
+
+.show {
+    display: block !important;
+}

@@ -2,17 +2,22 @@ import { Scene, PerspectiveCamera, WebGLRenderer, sRGBEncoding, AmbientLight, Di
 import { GLTFLoader } from 'https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js';
 
 const avatarDiv = document.getElementById('avatarLoc');
+const backgroundDiv = document.getElementById('backgroundCont');
+
+console.log(backgroundDiv);
+
+const size = 150;
 
 const clock = new Clock();
 
 const scene = new Scene();
-const camera = new PerspectiveCamera( 60, 600 / 600, .1, 10000 );
+const camera = new PerspectiveCamera( 60, size / size, .1, 10000 );
 const renderer = new WebGLRenderer({ alpha: true, antialias: true });
 
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = sRGBEncoding;
 renderer.setClearColor(0x000000, 0);
-renderer.setSize( 600, 600 );
+renderer.setSize( size, size );
 avatarDiv.appendChild( renderer.domElement );
 
 const ambientLight = new AmbientLight(0x222222);
@@ -36,8 +41,9 @@ scene.add(keyLight);
 
 camera.position.y = 1.7;
 camera.position.z = .55;
-camera.aspect = 600 / 600;
+camera.aspect = size / size;
 camera.updateProjectionMatrix;
+camera.zoom = -10
 
 function animate() {
     requestAnimationFrame( animate );
@@ -63,13 +69,13 @@ loader.load('./exampleAvatar.glb', function( gltf ) {
     document.addEventListener("mousemove", function(event) {
         const { clientX, clientY } = event;
 
-        const mouseX = (clientX / window.innerWidth) * 2 - 1;
-        const mouseY = ((clientY / window.innerHeight) * 2 + 1) * -1;
+        const mouseX = (clientX / backgroundDiv.offsetWidth) * 2 - 1;
+        const mouseY = ((clientY / backgroundDiv.offsetHeight) * 2 + 1) * -1;
 
         let currentMouse = new Vector2(mouseX, mouseY);
 
-        const centerX = -1 + ((1 - (-1)) * (elementCenterPosition.x - 0)) / (window.innerWidth - 0);
-        const centerY = -1 + ((1 - (-1)) * (elementCenterPosition.y - 0)) / (window.innerHeight - 0) * -1;
+        const centerX = -1 + ((1 - (-1)) * (elementCenterPosition.x - 0)) / (backgroundDiv.offsetWidth - 0);
+        const centerY = -1 + ((1 - (-1)) * (elementCenterPosition.y - 0)) / (backgroundDiv.offsetHeight - 0) * -1;
 
         const centerSpots = new Vector2(centerX, centerY);
 
@@ -92,4 +98,15 @@ loader.load('./exampleAvatar.glb', function( gltf ) {
     console.error( error );
 })
 
-animate()
+animate();
+
+
+/*** Virtual Office Manipulation ***/
+
+const statue = document.getElementById('statue');
+const statueModal = document.getElementById('statueModal');
+
+statue.addEventListener('click', function() {
+    console.log('clicked');
+    statueModal.classList.add('show');
+})
